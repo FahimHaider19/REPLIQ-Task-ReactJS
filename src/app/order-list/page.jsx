@@ -130,7 +130,6 @@ export default function OrderList() {
                     >
                       <Disclosure.Panel as="dd" className="mt-2 pr-12">
                         {order.products.map((product) => (
-                          console.log(product);
                           <div
                             key={product.id}
                             class="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start"
