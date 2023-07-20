@@ -1,3 +1,5 @@
+import AddProduct from "./addProduct";
+
 const data = [
   {
     id: 1,
@@ -39,7 +41,7 @@ const data = [
     id: 5,
     name: "Water Pot",
     price: "16.00",
-    category: "Daily Product",
+    category: "Daily data",
     reviews: 15,
     image: "https://images.unsplash.com/photo-1610824352934-c10d87b700cc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
     description:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate officiis facere debitis doloribus natus iure quam ducimus veritatis rerum tempora atque saepe beatae odit, praesentium est delectus, ab aliquid sequi quis eos. Repellat consectetur laudantium, eos consequatur provident explicabo, accusantium excepturi aspernatur beatae voluptates possimus inventore nemo, amet sed non aliquam cupiditate architecto assumenda enim? Suscipit nulla officiis fuga quod!"
@@ -73,42 +75,93 @@ const data = [
   }
 ];
 
-export default function ProductList() {
+export default function Products() {
   return (
-    <div className="flex flex-col max-w-7xl">
-      <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
-        <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
-          <div className="overflow-hidden">
-            <table className="table-auto min-w-full text-left text-sm font-light">
-              <thead className="border-b font-medium dark:border-neutral-500">
+    <div className="bg-white">
+      <div className="mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:px-8">
+        <AddProduct />
+        <div className="px-4 md:px-0  ">
+          <div className="-mx-4 mt-8 overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:-mx-6 md:mx-0 rounded-lg">
+            <table className="min-w-full divide-y divide-gray-300">
+              <thead className="bg-gray-50">
                 <tr>
-                  <th scope="col" className="px-6 py-4">#</th>
-                  <th scope="col" className="px-6 py-4">Image</th>
-                  <th scope="col" className="px-6 py-4">Product Name</th>
-                  <th scope="col" className="px-6 py-4">Price</th>
-                  <th scope="col" className="px-6 py-4">Category</th>
-                  <th scope="col" className="px-6 py-4">Reviews</th>
+                  <th
+                    scope="col"
+                    className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"
+                  >
+                    ID
+                  </th>
+                  <th
+                    scope="col"
+                    className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"
+                  >
+                    Image
+                  </th>
+                  <th
+                    scope="col"
+                    className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"
+                  >
+                    Product Name
+                  </th>
+                  <th
+                    scope="col"
+                    className="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 sm:table-cell"
+                  >
+                    Category
+                  </th>
+                  <th
+                    scope="col"
+                    className="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell"
+                  >
+                    Reviews
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                  >
+                    Price
+                  </th>
+                  <th scope="col" className="relative py-3.5 pl-3 pr-4 sm:pr-6">
+                    <span className="sr-only">Edit</span>
+                  </th>
                 </tr>
               </thead>
-              <tbody>
-                {data.map((product, index) => (
-                  <tr
-                    key={product.id}
-                    className={`border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600`}
-                  >
-                    <td className="whitespace-nowrap px-6 py-4 font-medium">{index + 1}</td>
-                    <td className="whitespace-nowrap px-6 py-4">
-                      <img
-                        src={product.image}
-                        alt={product.name}
-                        className="w-16 h-16 object-cover rounded-full"
-                      />
+              <tbody className="divide-y divide-gray-200 bg-white">
+                {data.map((product) => (
+                  <tr key={product.email}>
+                    <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                      {product.id}
                     </td>
-                    <td className="whitespace-nowrap px-6 py-4">{product.name}</td>
-                    <td className="whitespace-nowrap px-6 py-4">{product.price}</td>
-                    <td className="whitespace-nowrap px-6 py-4">{product.category}</td>
-                    <td className="whitespace-nowrap px-6 py-4">{product.reviews}</td>
-                    </tr>
+                    <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                      <img src={product.image} className="w-20 rounded-md" />
+                    </td>
+                    <td className="hidden whitespace-nowrap px-3 py-4 text-sm text-gray-500 sm:table-cell">
+                      {product.name}
+                    </td>
+                    <td className="hidden whitespace-nowrap px-3 py-4 text-sm text-gray-500 lg:table-cell">
+                      {product.category}
+                    </td>
+                    <td className="hidden whitespace-nowrap px-3 py-4 text-sm text-gray-500 lg:table-cell">
+                      {product.reviews}
+                    </td>
+                    <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                      {product.price}
+                    </td>
+                    <td className="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                      <a
+                        href="#"
+                        className="pr-2 text-indigo-600 hover:text-indigo-900"
+                      >
+                        Edit<span className="sr-only">, {product.name}</span>
+                      </a>
+                      <a
+                        href="#"
+                        className="text-indigo-600 hover:text-indigo-900"
+                      >
+                        Delete<span className="sr-only">, {product.name}</span>
+                      </a>
+                    </td>
+                  </tr>
                 ))}
               </tbody>
             </table>
@@ -118,6 +171,3 @@ export default function ProductList() {
     </div>
   );
 }
-
-
-
