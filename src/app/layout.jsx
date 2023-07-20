@@ -5,11 +5,6 @@ import { SessionProvider } from "next-auth/react";
 
 const inter = Inter({ subsets: ['latin'] })
 
-export const metadata = {
-  title: 'Repliq Practical Task',
-  description: 'Created by FAHIM HAIDER',
-}
-
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, ShoppingCartIcon, XMarkIcon } from "@heroicons/react/24/outline";
